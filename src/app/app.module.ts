@@ -4,10 +4,22 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavigatorComponent } from './navigator/navigator.component';
 import { LayoutModule } from '@angular/cdk/layout';
-import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule } from '@angular/material';
+import {
+  MatToolbarModule,
+  MatButtonModule,
+  MatCardModule,
+  MatSidenavModule,
+  MatIconModule,
+  MatListModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatRippleModule,
+  MatSnackBarModule
+} from '@angular/material';
 
 import { CookieService } from 'ngx-cookie-service';
 
@@ -29,11 +41,20 @@ import { ManagerComponent } from './manager/manager.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+
     LayoutModule,
     MatToolbarModule,
     MatButtonModule,
+    MatCardModule,
     MatSidenavModule,
     MatIconModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatRippleModule,
+    MatSnackBarModule,
     MatListModule
   ],
   providers: [

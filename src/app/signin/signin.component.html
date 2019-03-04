@@ -1,3 +1,24 @@
-<p>
-  signin works!
-</p>
+<mat-card class="signin-card">
+  <mat-card-header>
+    <div mat-card-avatar></div>
+    <mat-card-title>Sign In</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form [formGroup]="signinForm" (ngSubmit)="onSubmit()">
+      <mat-form-field>
+	<input matInput placeholder="Uesr Name" formControlName="user">
+	<mat-error *ngIf="signinForm.controls.user.errors && signinForm.controls.user.errors.required">Username is required</mat-error>
+	<mat-icon matSuffix>face</mat-icon>
+      </mat-form-field>
+      <mat-form-field>
+	<input matInput placeholder="Password" [type]="visible ? 'text' : 'password'" formControlName="password">
+	<mat-error *ngIf="signinForm.controls.password.errors && signinForm.controls.password.errors.required">Password is required</mat-error>
+	<mat-icon matSuffix (click)="visible = !visible">{{visible ? 'visibility' : 'visibility_off'}}</mat-icon>
+      </mat-form-field>
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button color="primary" (click)="onSubmit()"><mat-icon>forward</mat-icon>Sign In</button>
+    <a routerLink="/signup"><button mat-button color="socondary"><mat-icon>assignment</mat-icon>Sign Up</button></a>
+  </mat-card-actions>
+</mat-card>

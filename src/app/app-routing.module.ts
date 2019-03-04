@@ -13,8 +13,20 @@ import { RoleGuard } from './guards/role.guard'
 const routes: Routes = [
   {
     path: '',
-    component: HomeComponent,
-    canActivate: [AuthGuard]
+    component: NavigatorComponent,
+    canActivate: [AuthGuard],
+    children: [
+      {
+        path: '',
+        canActivate: [AuthGuard],
+        component: HomeComponent
+      },
+      {
+        path: 'manager',
+        canActivate: [AuthGuard],
+        component: ManagerComponent
+      }
+    ]
   },
   {
     path: 'signup',

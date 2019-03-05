@@ -18,7 +18,9 @@ import {
   MatFormFieldModule,
   MatInputModule,
   MatRippleModule,
-  MatSnackBarModule
+  MatSnackBarModule,
+  MatGridListModule,
+  MatMenuModule
 } from '@angular/material';
 
 import { CookieService } from 'ngx-cookie-service';
@@ -44,7 +46,6 @@ import { ManagerComponent } from './manager/manager.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-
     LayoutModule,
     MatToolbarModule,
     MatButtonModule,
@@ -55,7 +56,9 @@ import { ManagerComponent } from './manager/manager.component';
     MatInputModule,
     MatRippleModule,
     MatSnackBarModule,
-    MatListModule
+    MatListModule,
+    MatGridListModule,
+    MatMenuModule
   ],
   providers: [
     CookieService,

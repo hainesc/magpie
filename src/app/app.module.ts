@@ -4,9 +4,14 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import {
+  HttpClientModule,
+  HTTP_INTERCEPTORS
+} from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavigatorComponent } from './navigator/navigator.component';
+import { AuthInterceptor } from './interceptors/auth.interceptor'
+
 import { LayoutModule } from '@angular/cdk/layout';
 import {
   MatToolbarModule,
@@ -22,6 +27,7 @@ import {
   MatGridListModule,
   MatMenuModule
 } from '@angular/material';
+import { FlexLayoutModule } from '@angular/flex-layout'
 
 import { CookieService } from 'ngx-cookie-service';
 
@@ -43,6 +49,7 @@ import { ManagerComponent } from './manager/manager.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    FlexLayoutModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
@@ -62,7 +69,12 @@ import { ManagerComponent } from './manager/manager.component';
   ],
   providers: [
     CookieService,
-    FormBuilder
+    FormBuilder,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

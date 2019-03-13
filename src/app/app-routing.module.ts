@@ -2,9 +2,13 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent } from './home/home.component'
+
 import { SignupComponent } from './signup/signup.component'
 import { SigninComponent } from './signin/signin.component'
-import { ManagerComponent } from './manager/manager.component'
+import { PayrollComponent } from './payroll/payroll.component'
+import { StaffComponent } from './staff/staff.component'
+import { TeamComponent } from './team/team.component'
+import { ProfileComponent } from './profile/profile.component'
 import { NavigatorComponent } from './navigator/navigator.component'
 
 import { AuthGuard } from './guards/auth.guard'
@@ -22,10 +26,26 @@ const routes: Routes = [
         component: HomeComponent
       },
       {
-        path: 'manager',
-        component: ManagerComponent,
+        path: 'profile',
+        canActivate: [AuthGuard],
+        component: ProfileComponent
+      },
+      {
+        path: 'payroll',
+        canActivate: [AuthGuard],
+        component: PayrollComponent
+      },
+      {
+        path: 'staff',
+        component: StaffComponent,
         canActivate: [RoleGuard],
-        data: { role: 'manager' }
+        data: { roles: ['manager', 'hr'] }
+      },
+      {
+        path: 'team',
+        component: TeamComponent,
+        canActivate: [RoleGuard],
+        data: { roles: ['manager', 'hr'] }
       }
     ]
   },

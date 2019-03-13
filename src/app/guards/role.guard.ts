@@ -11,7 +11,7 @@ export class RoleGuard implements CanActivate {
 
   canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
 
-    let role = next.data["role"] as string;
+    let roles = next.data["roles"] as Array<string>
     try {
       if (this.cookie.check("BID")) {
         let token = this.cookie.get('BID')
@@ -23,16 +23,29 @@ export class RoleGuard implements CanActivate {
           date.setUTCSeconds(claims.exp)
           if (date.valueOf() > new Date().valueOf()) {
             if (claims.hasOwnProperty('groups')) {
-              // if role in groups return true
-              let groups = claims.groups as Array<string>;
-              return groups.indexOf(role) > -1
+              // if one of roles in groups return true
+              let groups = claims.groups as Array<string>
+              console.log(groups)
+              for (let role of roles) {
+                if (groups.indexOf(role) > -1) {
+                  return true
+                }
+              }
             }
+          } else {
+            // token is expired
+            this.router.navigate(['/signin'])
+            return false
           }
         }
+      } else {
+        this.router.navigate(['/signin'])
+        return false
       }
     } catch (e) {
-
+      console.log(e)
     }
+    console.log(roles)
     this.router.navigate(['/page404'])
     return false
   }

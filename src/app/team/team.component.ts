@@ -31,10 +31,9 @@ export class TeamComponent implements OnInit {
     return 'staff'
   })();
 
-  displayedColumns = ['select', 'name', 'describe'];
+  displayedColumns = ['name', 'describe', 'anchor'];
   dataSource: MatTableDataSource<Team>;
   @ViewChild(MatPaginator) paginator: MatPaginator;
-  selection = new SelectionModel<Team>(true, []);
 
   constructor(
     private cookie: CookieService,
@@ -92,43 +91,9 @@ export class TeamComponent implements OnInit {
       }
     });
   }
-
-  onDelete(): void {
-    if (this.selection && !this.selection.isEmpty()) {
-      this.team.deleteTeams(this.selection.selected)
-        .subscribe(
-          (resp: Response) => {
-            if (resp instanceof HttpErrorResponse) {
-              this.snackBar.open('Delete team failed', '', { duration: 2000 });
-            } else {
-              this.snackBar.open('Delete team success', '', { duration: 2000 });
-              this.fetchTeams()
-            }
-          },
-          err => {
-            this.snackBar.open('Delete team failed', '', { duration: 2000 });
-          }
-        )
-    }
-
-  }
-  /** Whether the number of selected elements matches the total number of rows. */
-  isAllSelected() {
-    const numSelected = this.selection.selected.length;
-    const numRows = this.dataSource.data.length;
-    return numSelected === numRows;
-  }
-
-  /** Selects all rows if they are not all selected; otherwise clear selection. */
-  masterToggle() {
-    this.isAllSelected() ?
-      this.selection.clear() :
-      this.dataSource.data.forEach(row => this.selection.select(row));
-  }
 }
 
 @Component({
-  // selector: 'add-gateway-dialog',
   template: `
 <h1 mat-dialog-title>Add Team</h1>
 

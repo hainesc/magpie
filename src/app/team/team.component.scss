@@ -7,5 +7,37 @@
 }
 
 table {
+    width: 100%;
+}
+
+/**
+ * Additional styles for anchor-rows.
+ */
+
+// Make rows relatively positioned so that the child cell can use absolute
+// positioning relative to this row.
+.mat-row, .mat-header-row {
+  position: relative;
+}
+
+// Cells in this column should stretch to fill the row.
+.mat-column-anchor {
+    opacity: .1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+// The anchor should stretch to fill the cell.
+a {
+  display: block;
+  height: 100%;
   width: 100%;
+}
+
+// Additional UX affordance so users know they can interact with the row.
+a:hover {
+  background: #CCC;
 }

@@ -9,6 +9,7 @@ import { PayrollComponent } from './payroll/payroll.component'
 import { StaffComponent } from './staff/staff.component'
 import { TeamComponent } from './team/team.component'
 import { ProfileComponent } from './profile/profile.component'
+import { DetailComponent } from './detail/detail.component'
 import { NavigatorComponent } from './navigator/navigator.component'
 
 import { AuthGuard } from './guards/auth.guard'
@@ -46,7 +47,11 @@ const routes: Routes = [
         component: TeamComponent,
         canActivate: [RoleGuard],
         data: { roles: ['manager', 'hr'] }
-      }
+      },
+      {
+        path: 'team/:name',
+        component: DetailComponent
+      },
     ]
   },
   {

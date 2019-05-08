@@ -10,10 +10,6 @@ table {
     width: 100%;
 }
 
-/**
- * Additional styles for anchor-rows.
- */
-
 // Make rows relatively positioned so that the child cell can use absolute
 // positioning relative to this row.
 .mat-row, .mat-header-row {

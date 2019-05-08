@@ -43,6 +43,7 @@ import { StaffComponent } from './staff/staff.component';
 import { TeamComponent, AddTeamDialog } from './team/team.component';
 import { PayrollComponent } from './payroll/payroll.component';
 import { ProfileComponent } from './profile/profile.component';
+import { DetailComponent } from './detail/detail.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { ProfileComponent } from './profile/profile.component';
     TeamComponent,
     AddTeamDialog,
     PayrollComponent,
-    ProfileComponent
+    ProfileComponent,
+    DetailComponent
   ],
   imports: [
     BrowserModule,

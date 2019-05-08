@@ -80,12 +80,6 @@ export class SignupComponent implements OnInit {
           console.log(err)
         }
       )
-    /*
-      console.log(this.signupForm.controls.user.value)
-      console.log(this.signupForm.controls.email.value)
-      console.log(this.signupForm.controls.password.value)
-      console.log(this.signupForm.controls.confirm.value)
-    */
   }
 
   confirmValidator(group: FormGroup) { // here we have the 'passwords' group

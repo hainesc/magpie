@@ -1,12 +1,8 @@
 import { Component, OnInit, ViewChild, Inject } from '@angular/core';
-import {
-  MatPaginator,
-  MatTableDataSource,
-  MatDialog,
-  MatDialogRef,
-  MatSnackBar,
-  MAT_DIALOG_DATA
-} from '@angular/material';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatTableDataSource } from '@angular/material/table';
 import { HttpErrorResponse } from '@angular/common/http';
 import { SelectionModel } from '@angular/cdk/collections';
 import { CookieService } from 'ngx-cookie-service';
@@ -33,7 +29,7 @@ export class TeamComponent implements OnInit {
 
   displayedColumns = ['name', 'describe', 'anchor'];
   dataSource: MatTableDataSource<Team>;
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+    @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
   constructor(
     private cookie: CookieService,

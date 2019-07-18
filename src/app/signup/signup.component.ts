@@ -4,7 +4,7 @@ import { FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Valida
 import { ErrorStateMatcher } from '@angular/material/core';
 import { HttpErrorResponse } from '@angular/common/http';
 
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthService } from "../services/auth.service";
 
 export class SignupErrorStateMatcher implements ErrorStateMatcher {
